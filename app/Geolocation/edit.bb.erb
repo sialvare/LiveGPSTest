@@ -1,0 +1,29 @@
+<div data-role="page">
+
+  <div data-role="header" data-position="inline">
+    <%= link_to "Back", :action => :show, :id => @geolocation.object %>
+    <h1>Edit <%= @geolocation.latitude%></h1>
+    <%= link_to "Delete", :action => :delete, :id => @geolocation.object %>
+  </div>
+
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :update %>">
+      <input type="hidden" name="id" value="<%= @geolocation.object %>"/>
+      <table>
+          
+          <tr>
+              <td class="itemLabel">Latitude: </td>
+              <td class="itemValue"><input type="text" name="geolocation[latitude]" value="<%= @geolocation.latitude %>"/></td>
+          </tr>
+          
+          <tr>
+              <td class="itemLabel">Longitude: </td>
+              <td class="itemValue"><input type="text" name="geolocation[longitude]" value="<%= @geolocation.longitude %>"/></td>
+          </tr>
+          
+      </table>
+      <input type="submit" value="Update"/>
+    </form>
+  </div>
+
+</div>

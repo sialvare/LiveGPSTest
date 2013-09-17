@@ -1,0 +1,30 @@
+<div data-role="page">
+
+  <div data-role="header" data-position="inline">
+    <h1>New <%= @geolocation.title %></h1>
+    <a href="<%= url_for :action => :index %>" class="ui-btn-left" data-icon="back" data-direction="reverse">
+      Cancel
+    </a>
+  </div>
+
+  <div data-role="content">
+    <form method="POST" action="<%= url_for :action => :create %>">
+      <input type="hidden" name="id" value="<%= @geolocation.object %>"/>
+
+      
+          <div data-role="fieldcontain">
+            <label for="geolocation[latitude]" class="fieldLabel">Latitude</label>
+            <input type="text" id="geolocation[latitude]" name="geolocation[latitude]" <%= placeholder("Latitude") %> />
+          </div>
+      
+          <div data-role="fieldcontain">
+            <label for="geolocation[longitude]" class="fieldLabel">Longitude</label>
+            <input type="text" id="geolocation[longitude]" name="geolocation[longitude]" <%= placeholder("Longitude") %> />
+          </div>
+      
+
+      <input type="submit" value="Create"/>
+    </form>
+  </div>
+
+</div>

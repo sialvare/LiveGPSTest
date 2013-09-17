@@ -1,0 +1,39 @@
+<div data-role="page">
+
+	<div data-role="header" data-position="inline">
+    <h1>Geolocations</h1>
+    <a href="<%= Rho::RhoConfig.start_path %>" class="ui-btn-left" data-icon="home" data-direction="reverse" <%= "data-ajax='false'" if is_bb6 %>>
+      Home
+    </a>
+    <a href="<%= url_for :action => :new %>" class="ui-btn-right" data-icon="plus">
+      New
+    </a>
+	</div>
+
+      <% if System::get_property('platform') != 'WINDOWS' %>
+               <p><a href="/app/Geolocation/showmap?latitude=<%= GeoLocation.latitude.to_s%>&longitude=<%= GeoLocation.longitude.to_s%>&provider=Google"
+                 target="_self">[show Google map at location <%= GeoLocation.latitude.to_s%>,<%= GeoLocation.longitude.to_s%> ]</a></p>
+               
+               <p><a href="/app/Geolocation/showmap_250?latitude=<%= GeoLocation.latitude.to_s%>&longitude=<%= GeoLocation.longitude.to_s%>&provider=Google"
+                 target="_self">[show Google map at location <%= GeoLocation.latitude.to_s%>,<%= GeoLocation.longitude.to_s%> with 2500 pins]</a></p>
+           
+                   <p><a href="/app/Geolocation/showmap_coding?provider=Google" target="_self">[show Google map at location : NG10 3XL ]</a></p>    
+               
+           <% else %>      
+               <p><a href="<%= url_for :controller => :Settings, :action => :not_supported, :query => {:feature => 'Google Map'} %>"
+                 target="_self">[show Google map at location <%= GeoLocation.latitude.to_s%>,<%= GeoLocation.longitude.to_s%> ]</a></p>
+               
+           <% end %>      
+    
+      <% @geolocations.each do |geolocation| %>
+          <li>
+            <a href="<%= url_for :action => :show, :id => geolocation.object %>">
+              <%= geolocation.latitude %>
+            </a>
+          </li>
+      
+      <% end %>
+    </ul>
+  </div>
+
+</div>

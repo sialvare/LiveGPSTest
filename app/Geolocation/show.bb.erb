@@ -1,0 +1,25 @@
+<div data-role="page" data-add-back-btn="true">
+
+  <div data-role="header" data-position="inline">
+    <%= link_to "Back", :action => :index %>
+    <h1><%= @geolocation.latitude %></h1>
+    <%= link_to "Edit", :action => :edit, :id => @geolocation.object %>
+  </div>
+
+  <div data-role="content">
+    <table>
+      
+      <tr>
+    	<td class="itemLabel">Latitude</td>
+        <td class="itemValue"><%= @geolocation.latitude%></td>
+      </tr>
+      
+      <tr>
+    	<td class="itemLabel">Longitude</td>
+        <td class="itemValue"><%= @geolocation.longitude%></td>
+      </tr>
+      
+    </table>
+  </div>
+
+</div>
